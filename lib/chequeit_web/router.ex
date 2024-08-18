@@ -15,9 +15,19 @@ defmodule ChequeitWeb.Router do
   end
 
   scope "/", ChequeitWeb do
-    pipe_through :browser
+    pipe_through [:browser]
 
-    get "/", PageController, :home
+    get "/", DashboardController, :dashboard
+    get "/history", TransactionsController, :transactions
+    get "/transfer", TransferController, :transfer
+    get "/banks", BanksController, :banks
+  end
+
+  scope "/auth", ChequeitWeb do
+    pipe_through  [:browser]
+
+    get "/signin", AuthController, :sign_in
+    get "/signout", AuthController, :sign_out
   end
 
   # Other scopes may use custom stacks.

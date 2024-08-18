@@ -106,7 +106,12 @@
 
   /* Home */
   .home {
-    @apply no-scrollbar flex w-full flex-row max-xl:max-h-screen max-xl:overflow-y-scroll;
+    overflow-y: scroll;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
   }
 
   .home-content {
@@ -118,7 +123,18 @@
   }
 
   .total-balance {
-    @apply flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 4;
+    border-radius: 0.75rem;
+    border: 1px solid #CBD5E0;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    @media (min-width: 640px) {
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
   }
 
   .total-balance-chart {
@@ -171,7 +187,7 @@
   }
 
   .profile-details {
-    @apply flex flex-col pt-24;
+    @apply flex flex-col pt-24 pl-3;
   }
 
   .profile-name {

@@ -1,0 +1,126 @@
+<div class="home">
+  <div class="home-content">
+    <header class="home-header">
+      <h1 class="header-box-title">Welcome,
+        <span class="text-bankGradient">&nbsp;Raulins</span>
+      </h1>    
+      <p class="header-box-subtext">Access and manage your account and transactions efficiently</p>  
+      <section class="total-balance">
+        <div class="total-balance-chart">
+          <!-- DOUGHNUTCHART -->
+        </div>
+        <div class="flex flex-col gap-6">
+          <h2 class="header-2">
+            Bank Accounts: 2<!--#{total_banks}-->
+          </h2>
+          <div class="flex flex-col gap-2">
+            <p class="total-balance-labe">
+              Total Current Balance:
+            </p>
+            <p class="total-balance-amount flex-center gap-2">
+              $12,250.35<!--#{total_amount} -->
+            </p>
+          </div>
+        </div>
+      </section>
+    </header>
+    RECENT TRANSACTIONS
+  </div>
+  <aside class="right-sidebar">
+    <section class="flex flex-col pb-8">
+      <div class="profile-banner" />
+      <div class="profile">
+        <div class="profile-img">
+          <span class="text-5xl font-bold text-blue-500">R</span><!--#{user.first_name}-->
+        </div>
+      </div>
+      <div class="profile-details">
+        <h1 class="profile-name">
+          Raulins Nyaoke <!--#{user.first_name} #{user.second_name} -->
+        </h1>
+        <p class="profile-email">
+          raulins.nyaoke@pesaflow.com <!--#{user.email}-->
+        </p>
+      </div>
+    </section>
+    <section class="banks">
+      <div class="flex w-full justify-between">
+        <h2 class="header-2">
+          My banks  
+        </h2>
+        <.link navigate={~p"/"} class="flex gap-2">
+          <img src={~p"/images/plus.svg"} alt="plus" class="width-[20] height[20]">
+          <h2 class="text-8 font-semibold text-gray-500">Add bank</h2>
+        </.link>
+      </div>
+      <!-- if banks? > 0 do (LOOP REQUIRED)--> 
+      <div class="relative flex flex-1 flex-col items-center justify-center gap-5">
+        <div class="relative z-10">
+          <div class="flex flex-col">
+            <.link navigate={~p"/"} class="bank-card">
+              <div class="bank-card_content">
+                <h1 class="text-16 font-semibold text-white">
+                  Raulins N. <!-- #{user_name} -->
+                </h1>
+                <p class="font-ibm-plex-serif font-black text-white">
+                  $123.50 <!-- formatted#{account_amount} -->
+                </p>
+                <article class="flex flex-col gap-2">
+                  <div class="flex justify-between">
+                    <h1 class="text-12 font-semibold text-white">
+                      Raulins N. <!-- #{user_name} -->
+                    </h1>
+                    <h2 class="text-12 font-semibold text-white">
+                      &#9679;&#9679;/&#9679; &#9679;
+                    </h2>
+                  </div>
+                  <p class="tex-14 font-semibold tracking-[1.1px] text-white">
+                    &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;<span class="text-16 ">1234 <!--last four numbers of the account--></span>
+                  </p>
+                </article>
+              </div>
+              <div class="bank-card_icon">
+                <img src={~p"/images/Paypass.svg"} width={20} height={24} alt="pay">
+                <img src={~p"/images/mastercard.svg"} width={45} height={32} alt="mastercard" class="ml-5">
+              </div>
+              <img src={~p"/images/lines.png"} width={316} height={190} alt="lines" class="absolute top-0 left-0">
+            </.link>
+          </div>
+        </div>
+        <!-- if we have an additional bank-->
+        <div class="absolute right-0 top-8 z-0 w-[90%]">
+          <div class="flex flex-col">
+            <.link navigate={~p"/"} class="bank-card">
+              <div class="bank-card_content">
+                <h1 class="text-16 font-semibold text-white">
+                  Raulins N. <!-- #{user_name} -->
+                </h1>
+                <p class="font-ibm-plex-serif font-black text-white">
+                  $123.50 <!-- formatted#{account_amount} -->
+                </p>
+                <article class="flex flex-col gap-2">
+                  <div class="flex justify-between">
+                    <h1 class="text-12 font-semibold text-white">
+                      Raulins N. <!-- #{user_name} -->
+                    </h1>
+                    <h2 class="text-12 font-semibold text-white">
+                      &#9679;&#9679;/&#9679; &#9679;
+                    </h2>
+                  </div>
+                  <p class="text-14 font-semibold tracking-[1.1px] text-white">
+                    &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679; &#9679;<span class="text-16 ">1234 <!--last four numbers of the account--></span>
+                  </p>
+              </article>
+              </div>
+              <div class="bank-card_icon">
+                <img src={~p"/images/Paypass.svg"} width={20} height={24} alt="pay">
+                <img src={~p"/images/mastercard.svg"} width={45} height={32} alt="mastercard" class="ml-5">
+              </div>
+              <img src={~p"/images/lines.png"} width={316} height={190} alt="lines" class="absolute top-0 left-0">
+            </.link>
+          </div>
+        </div>
+      </div>
+    </section>
+  </aside>
+</div>

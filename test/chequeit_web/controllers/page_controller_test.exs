@@ -1,4 +1,4 @@
-defmodule ChequeitWeb.PageControllerTest do
+defmodule ChequeitWeb.DashboardControllerTest do
   use ChequeitWeb.ConnCase
 
   test "GET /", %{conn: conn} do

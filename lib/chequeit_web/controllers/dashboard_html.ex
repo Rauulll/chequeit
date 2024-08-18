@@ -1,4 +1,4 @@
-defmodule ChequeitWeb.PageHTML do
+defmodule ChequeitWeb.DashboardHTML do
   @moduledoc """
   This module contains pages rendered by PageController.
 

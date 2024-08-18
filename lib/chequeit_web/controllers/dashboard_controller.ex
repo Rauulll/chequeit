@@ -1,9 +1,9 @@
-defmodule ChequeitWeb.PageController do
+defmodule ChequeitWeb.DashboardController do
   use ChequeitWeb, :controller
 
-  def home(conn, _params) do
+  def dashboard(conn, _params) do
     # The home page is often custom made,
     # so skip the default app layout.
-    render(conn, :home, layout: false)
+    render(conn, :dashboard)
   end
 end
