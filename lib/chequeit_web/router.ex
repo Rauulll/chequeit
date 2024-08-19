@@ -14,6 +14,15 @@ defmodule ChequeitWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {ChequeitWeb.Layouts, :auth}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   scope "/", ChequeitWeb do
     pipe_through [:browser]
 
@@ -24,10 +33,10 @@ defmodule ChequeitWeb.Router do
   end
 
   scope "/auth", ChequeitWeb do
-    pipe_through  [:browser]
+    pipe_through  [:auth]
 
-    get "/signin", AuthController, :sign_in
-    get "/signout", AuthController, :sign_out
+    get "/sign-in", AuthController, :sign_in
+    get "/sign-up", AuthController, :sign_up
   end
 
   # Other scopes may use custom stacks.
