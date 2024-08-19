@@ -35,8 +35,10 @@ defmodule ChequeitWeb.Router do
   scope "/auth", ChequeitWeb do
     pipe_through  [:auth]
 
-    get "/sign-in", AuthController, :sign_in
-    get "/sign-up", AuthController, :sign_up
+    get "/sign-in", UserSessionController, :index
+    post "/sign-in", UserSessionController, :create
+    get "/sign-up", UserRegistrationController, :index
+    post "/sign-up", UserRegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
