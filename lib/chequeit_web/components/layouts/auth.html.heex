@@ -11,7 +11,12 @@
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="flex h-screen w-full font-inter">
+  <body class="flex min-h-screen w-full justify-between font-inter">
     <%= @inner_content %>
+    <div class="auth-asset">
+      <div>
+        <img src={~p"/images/auth-image.svg"} width={500} height={500} alt="auth_image">
+      </div>
+    </div>
   </body>
 </html>

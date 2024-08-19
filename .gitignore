@@ -35,6 +35,6 @@ chequeit-*.tar
 npm-debug.log
 /assets/node_modules/
 
-#ignore npm requirements(for now)
+#ignore requirements(for now)
 requirements.txt
-
+/lib/chequeit_web/controllers/page_html/auth/note.txt

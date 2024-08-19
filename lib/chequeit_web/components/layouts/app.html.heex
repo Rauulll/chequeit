@@ -1,32 +1,45 @@
-<header class="px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
-    <div class="flex items-center gap-4">
-      <a href="/">
-        <img src={~p"/images/logo.svg"} width="36" />
-      </a>
-      <p class="bg-brand/5 text-brand rounded-full px-2 font-medium leading-6">
-        v<%= Application.spec(:phoenix, :vsn) %>
-      </p>
-    </div>
-    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
-      <a href="https://twitter.com/elixirphoenix" class="hover:text-zinc-700">
-        @elixirphoenix
-      </a>
-      <a href="https://github.com/phoenixframework/phoenix" class="hover:text-zinc-700">
-        GitHub
-      </a>
-      <a
-        href="https://hexdocs.pm/phoenix/overview.html"
-        class="rounded-lg bg-zinc-100 px-2 py-1 hover:bg-zinc-200/80"
-      >
-        Get Started <span aria-hidden="true">&rarr;</span>
-      </a>
-    </div>
-  </div>
-</header>
-<main class="px-4 py-20 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-2xl">
-    <.flash_group flash={@flash} />
+<body class="bg-white">
+  <section class="sidebar">
+    <nav class="flex flex-col gap-4">
+      <.link navigate={~p"/"} class="mb-12 cursor-pointer flex items-center gap-2">
+        <img src={~p"/images/logo.svg"} alt="logo" class="size-[24px] max-xl:size-14" />
+        <h1 class="sidebar-logo">ChequeIt</h1>
+      </.link>
+      <.link navigate={~p"/"} class={"sidebar-link " <> if @conn.request_path == "/", do: "bg-bank-gradient", else: ""}>
+        <div class="relative size-6 flex">
+          <img src={~p"/images/home.svg"} class={if @conn.request_path == "/", do: "brightness-3 invert-0", else: ""} alt="home">
+          <p class={"sidebar-label px-1 " <> if @conn.request_path == "/", do: "text-white", else: ""}>
+            Home
+          </p>
+        </div>
+      </.link>
+      <.link navigate={~p"/banks"} class={"sidebar-link " <> if @conn.request_path == "/banks", do: "bg-bank-gradient", else: ""}>
+        <div class="relative size-6 flex">
+          <img src={~p"/images/dollar-circle.svg"} class={if @conn.request_path == "/banks", do: "brightness-3 invert-0", else: ""} alt="banks">
+          <p class={"sidebar-label px-1 " <> if @conn.request_path == "/banks", do: "text-white", else: ""}>
+            Banks
+          </p>
+        </div>
+      </.link>
+      <.link navigate={~p"/history"} class={"sidebar-link " <> if @conn.request_path == "/history", do: "bg-bank-gradient", else: ""}>
+        <div class="relative size-6 flex">
+          <img src={~p"/images/transaction.svg"} class={if @conn.request_path == "/history", do: "brightness-3 invert-0", else: ""} alt="history">
+          <p class={"sidebar-label px-1 " <> if @conn.request_path == "/history", do: "text-white", else: ""}>
+            History 
+          </p>
+        </div>
+      </.link>
+      <.link navigate={~p"/transfer"} class={"sidebar-link " <> if @conn.request_path == "/transfer", do: "bg-bank-gradient", else: ""}>
+        <div class="relative size-6 flex">
+          <img src={~p"/images/money-send.svg"} class={if @conn.request_path == "/transfer", do: "brightness-3 invert-0", else: ""} alt="transfer">
+          <p class={"sidebar-label px-1 " <> if @conn.request_path == "/transfer", do: "text-white", else: ""}>
+            Transfer 
+          </p>
+        </div>
+      </.link>
+    </nav>
+  </section>      
+  <div class="home">
     <%= @inner_content %>
   </div>
-</main>
+</body>

@@ -14,10 +14,31 @@ defmodule ChequeitWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ChequeitWeb do
-    pipe_through :browser
+  pipeline :auth do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, html: {ChequeitWeb.Layouts, :auth}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
 
-    get "/", PageController, :home
+  scope "/", ChequeitWeb do
+    pipe_through [:browser]
+
+    get "/", DashboardController, :dashboard
+    get "/history", TransactionsController, :transactions
+    get "/transfer", TransferController, :transfer
+    get "/banks", BanksController, :banks
+  end
+
+  scope "/auth", ChequeitWeb do
+    pipe_through  [:auth]
+
+    get "/sign-in", UserSessionController, :index
+    post "/sign-in", UserSessionController, :create
+    get "/sign-up", UserRegistrationController, :index
+    post "/sign-up", UserRegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
