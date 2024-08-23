@@ -31,7 +31,7 @@
         </div>      
         <.input field={f[:date_of_birth]} type="number" label="Date Of Birth" placeholder="YYYY-MM-DD" required />
         <.input field={f[:email]} type="email" label="E-mail" placeholder="johndoe@gmail.com" required />
-        <.input field={f[:password]} type="password" label="Password" required />
+        <.input field={f[:password]} type="password" label="Password" placeholder="Enter your password" required />
 
         <:actions>
           <.button phx-disable-with="Loading" class="w-full form-btn">Sign Up</.button>

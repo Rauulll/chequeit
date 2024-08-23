@@ -1,10 +1,12 @@
 defmodule Chequeit.Accounts do
   alias Chequeit.Accounts.User
 
-  def register_user( attrs) do
+  @doc """
+  Validation of user input
+  """
+  def register_user(attrs) do
     %User{}
     |> User.registration_changeset(attrs)
-    # Appwrite Registration
   end
 
   @doc """

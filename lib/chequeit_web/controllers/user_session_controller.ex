@@ -5,5 +5,4 @@ defmodule ChequeitWeb.UserSessionController do
     user = %{email: nil}
     render(conn, :index, user: user , layout: false)
   end
-
 end

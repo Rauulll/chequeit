@@ -18,7 +18,7 @@
       <.simple_form :let={f} for={@conn.assigns["user"]} action={~p"/auth/sign-in"} class="mt-0">
 
         <.input field={f[:email]} type="email" label="E-mail" placeholder="johndoe@gmail.com" required />
-        <.input field={f[:password]} type="password" label="Password" required />
+        <.input field={f[:password]} type="password" label="Password" placeholder="Enter your password" required />
 
         <:actions>
           <.button phx-disable-with="Loading" class="w-full form-btn">Sign In</.button>
