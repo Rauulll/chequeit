@@ -2,7 +2,7 @@
   <div class="home-content">
     <header class="home-header">
       <h1 class="header-box-title">Welcome,
-        <span class="text-bankGradient">&nbsp;Raulins</span>
+        <span class="text-bankGradient">&nbsp;<%= @user.name %></span>
       </h1>    
       <p class="header-box-subtext">Access and manage your account and transactions efficiently</p>  
       <section class="total-balance">
@@ -31,15 +31,15 @@
       <div class="profile-banner" />
       <div class="profile">
         <div class="profile-img">
-          <span class="text-5xl font-bold text-blue-500">R</span><!--#{user.first_name}-->
+          <span class="text-5xl font-bold text-blue-500"><%= String.first("#{@user.name}") %></span><!--#{user.first_name}-->
         </div>
       </div>
       <div class="profile-details">
         <h1 class="profile-name">
-          Raulins Nyaoke <!--#{user.first_name} #{user.second_name} -->
+          <%= @user.name %> <!--#{user.first_name} #{user.second_name} -->
         </h1>
         <p class="profile-email">
-          raulins.nyaoke@pesaflow.com <!--#{user.email}-->
+          <%= @user.email %>  <!--#{user.email}-->
         </p>
       </div>
     </section>
@@ -60,7 +60,7 @@
             <.link navigate={~p"/"} class="bank-card">
               <div class="bank-card_content">
                 <h1 class="text-16 font-semibold text-white">
-                  Raulins N. <!-- #{user_name} -->
+                  <%= @user.name %> <!-- #{user_name} -->
                 </h1>
                 <p class="font-ibm-plex-serif font-black text-white">
                   $123.50 <!-- formatted#{account_amount} -->
@@ -68,7 +68,7 @@
                 <article class="flex flex-col gap-2">
                   <div class="flex justify-between">
                     <h1 class="text-12 font-semibold text-white">
-                      Raulins N. <!-- #{user_name} -->
+                      <%= @user.name %> <!-- #{user_name} -->
                     </h1>
                     <h2 class="text-12 font-semibold text-white">
                       &#9679;&#9679;/&#9679; &#9679;

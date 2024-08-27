@@ -59,8 +59,10 @@ defmodule Chequeit.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:httpoison, "~> 2.0"},
-      { :uuid, "~> 1.1" }
+      {:httpoison, "~> 1.7"},
+      {:uuid, "~> 1.1"},
+      {:elixir_plaid, "~> 1.0.0"},
+      {:argon2_elixir, "~> 4.0"}
     ]
   end
 

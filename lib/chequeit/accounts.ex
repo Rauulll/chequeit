@@ -1,4 +1,5 @@
 defmodule Chequeit.Accounts do
+
   alias Chequeit.Accounts.User
 
   @doc """

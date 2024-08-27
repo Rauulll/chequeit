@@ -14,6 +14,7 @@
   <body class="flex min-h-screen w-full justify-between font-inter">
     <%= @inner_content %>
     <div class="auth-asset">
+      <.flash_group flash={@flash} />
       <div>
         <img src={~p"/images/auth-image.svg"} width={500} height={500} alt="auth_image">
       </div>

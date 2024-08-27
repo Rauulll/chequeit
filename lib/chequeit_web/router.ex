@@ -8,6 +8,7 @@ defmodule ChequeitWeb.Router do
     plug :put_root_layout, html: {ChequeitWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ChequeitWeb.SetUser
   end
 
   pipeline :api do
@@ -32,6 +33,7 @@ defmodule ChequeitWeb.Router do
     get "/banks", BanksController, :banks
   end
 
+
   scope "/auth", ChequeitWeb do
     pipe_through  [:auth]
 
@@ -39,6 +41,8 @@ defmodule ChequeitWeb.Router do
     post "/sign-in", UserSessionController, :create
     get "/sign-up", UserRegistrationController, :index
     post "/sign-up", UserRegistrationController, :create
+    get "/link-bank", PlaidController, :index
+    post "/link-bank", PlaidController, :create
   end
 
   # Other scopes may use custom stacks.

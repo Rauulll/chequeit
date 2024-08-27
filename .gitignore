@@ -39,3 +39,6 @@ npm-debug.log
 #ignore requirements(for now)
 requirements.txt
 /lib/chequeit_web/controllers/page_html/auth/note.txt
+
+#ignore variables
+/.env

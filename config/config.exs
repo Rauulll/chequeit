@@ -61,6 +61,12 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+#Environment Variables
+config :chequeit, ChequeitWeb.Endpoint,
+  appwrite_secret: "f30f34d6f35853f9966205e8b628538dbfe6bddd8c72686fa69897b1ac14ec60f189c45722bc23752d734634a7229affd24b387a239540332d76ac2df8ae31dab56cbab0d9589f3f60b07fa441e10114cf600ddf66a8795c674c7cf411acc7f792f6ca492ac0d20628edd26c1c999b0d96428a9a3e8b88bef7597f86333cf760",
+  appwrite_project_id: "66c447850018d37b386c",
+  fixed_namespace_uuid: "6111b8d8-efa1-4365-963a-d2fd54f53737"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
