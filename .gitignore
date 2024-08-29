@@ -42,3 +42,5 @@ requirements.txt
 
 #ignore variables
 /.env
+
+/config

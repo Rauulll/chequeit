@@ -6,7 +6,7 @@ defmodule ChequeitWeb.SetUser do
   end
 
   def call(conn, _opt) do
-    user = get_session(conn, :appwrite_session, nil)
+    user = get_session(conn, :user, nil)
 
     cond do
       user == nil ->

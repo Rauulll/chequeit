@@ -50,4 +50,8 @@ defmodule ChequeitWeb.UserSessionController do
           |> redirect(to: ~p"/auth/sign-in")
     end
   end
+
+  def delete(conn, _params) do
+    UserAuth.sign_out(conn)
+  end
 end

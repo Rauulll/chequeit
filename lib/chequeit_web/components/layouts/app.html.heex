@@ -38,6 +38,26 @@
         </div>
       </.link>
     </nav>
+    <div class="footer">
+      <div class="footer_name">
+        <p class="text-xl font-bold text-gray-700"><%= String.first("#{@user.name}")%></p>
+      </div>
+      <div class="footer_email">
+        <h1 class="text-14 truncate font-normal text-gray-600">
+          <%= @user.name %>
+        </h1>
+        <h1 class="text-14 truncate font-normal text-gray-600">
+          <%= @user.email %>
+        </h1>
+      </div>
+      <div class="footer_image">
+        <.link 
+          method="delete" 
+          href={~p"/log-out"}>
+          <img src={~p"/images/logout.svg"} alt="logout">
+        </.link>
+      </div>
+    </div>
   </section>      
   <div class="home">
     <.flash_group flash={@flash} />

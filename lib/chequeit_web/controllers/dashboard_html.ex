@@ -1,6 +1,6 @@
 defmodule ChequeitWeb.DashboardHTML do
   @moduledoc """
-  This module contains pages rendered by PageController.
+  This module contains pages rendered by DashboardController.
 
   See the `page_html` directory for all templates available.
   """

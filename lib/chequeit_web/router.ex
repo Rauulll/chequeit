@@ -1,4 +1,5 @@
 defmodule ChequeitWeb.Router do
+  alias Hex.API.User
   use ChequeitWeb, :router
 
   pipeline :browser do
@@ -28,9 +29,12 @@ defmodule ChequeitWeb.Router do
     pipe_through [:browser]
 
     get "/", DashboardController, :dashboard
+    delete "/", DashboardController, :log_out
     get "/history", TransactionsController, :transactions
     get "/transfer", TransferController, :transfer
     get "/banks", BanksController, :banks
+
+    delete "/log-out", UserSessionController, :delete
   end
 
 
