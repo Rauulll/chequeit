@@ -42,7 +42,7 @@ defmodule ChequeitWeb.UserSessionController do
         end
       {:ok, %HTTPoison.Response{status_code: 404}} ->
         conn
-          |> put_flash(:error, "Not Found :(")
+          |> put_flash(:error, "Invalid email or password")
           |> redirect(to: ~p"/auth/sign-in")
       {:error, %HTTPoison.Error{reason: _reason}} ->
         conn

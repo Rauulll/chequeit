@@ -63,9 +63,14 @@ config :phoenix, :json_library, Jason
 
 #Environment Variables
 config :chequeit, ChequeitWeb.Endpoint,
-  appwrite_secret: "||||||||",
-  appwrite_project_id: "||||||||",
-  fixed_namespace_uuid: "||||||||||||"
+  appwrite_secret: "dd60c1f0136c3a029fb366d47765eb907983dc6ae0c7c5ef08bd9f7d966445839e7ecec2f5b32c7d35bd1623ac2ad1c1ad34d71286f46a62a6fb09d0a85db38fd38461b0d89f14fc38880d3b7ca11916b4908ff78c6e3c5b06ecb472a603d61869d4ab3a91ed81ee8a3451652bb2f70e48cfd418d86bf231a4c3f6672a56ff69",
+  appwrite_project_id: "66c447850018d37b386c",
+  fixed_namespace_uuid: "f135c5f2-661e-11ef-8cda-dc7196b9e6e1"
+
+config :sentry,
+  dsn: "https://962c8bdbaacef7ea7b781179fc2ee5c2@o4507865332580352.ingest.de.sentry.io/4507865346408528",
+  environment_name: Mix.env()
+
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

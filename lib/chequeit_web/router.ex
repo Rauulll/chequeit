@@ -1,5 +1,4 @@
 defmodule ChequeitWeb.Router do
-  alias Hex.API.User
   use ChequeitWeb, :router
 
   pipeline :browser do

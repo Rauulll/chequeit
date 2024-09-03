@@ -8,25 +8,9 @@
       <div class="flex flex-col gap-1 md:gap-3">
         <h1 class="text-24 lg:text-36 font-semibold text-gray-900">
           Sign Up
-        </h1>    
-        <%= if @conn.assigns[:user] do %>
-        <p class="text-16 font-normal text-gray-600">
-          Link your bank
-        </p>
-        <% else %> 
-        <p class="text-16 font-normal text-gray-600">
-          Please enter your details
-        </p>
-        <% end %>
+        </h1>
       </div>
-    </header>
-    <%= if @conn.assigns[:user] do %>
-    <div>
-      <.link class="plaidlink-primary w-full">
-        <h1>Connect to bank</h1>
-      </.link>
-    </div>
-    <% else %>    
+    </header>   
     <div>
       <.simple_form :let={f} for={@changeset} action={~p"/auth/sign-up"} class="mt-0">
         <.error :if={@changeset.action == :insert}>Oops, something went wrong! Please check the errors below.</.error>
@@ -57,6 +41,5 @@
         </.link>
       </footer>
     </div>
-    <% end %>
   </section>
 </section>

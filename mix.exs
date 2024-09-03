@@ -62,7 +62,9 @@ defmodule Chequeit.MixProject do
       {:httpoison, "~> 1.7"},
       {:uuid, "~> 1.1"},
       {:elixir_plaid, "~> 1.0.0"},
-      {:argon2_elixir, "~> 4.0"}
+      {:argon2_elixir, "~> 4.0"},
+      {:sentry, "~> 10.0"},
+      {:hackney, "~> 1.19"}
     ]
   end
 

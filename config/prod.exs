@@ -16,5 +16,26 @@ config :swoosh, local: false
 # Do not print debug messages in production
 config :logger, level: :info
 
+# The DSN tells the SDK where to send the events.
+# If this value is not provided, the SDK will try to read it from the SENTRY_DSN environment variable.
+# If that variable also does not exist, the SDK will just not send any events.
+# In runtimes without a process environment (such as the browser) that fallback does not apply.
+config :sentry,
+  dsn: "https://962c8bdbaacef7ea7b781179fc2ee5c2@o4507865332580352.ingest.de.sentry.io/4507865346408528",
+  environment_name: :prod,
+  release: "chequeit@0.1.0"
+
+config :chequeit, :logger, [
+  {:handler, :my_sentry_handler, Sentry.LoggerHandler, %{
+    config: %{
+      metadata: [:file, :line],
+      rate_limiting: [max_events: 10, duration: _1_second = 1_000],
+      capture_log_messages: true,
+      capture_log_messages: true, level: :error #to capture logged messages above a specific log level (and not just process crashes) example |> Logger.error("This will be reported to Sentry")
+    }
+  }}
+]
+
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
