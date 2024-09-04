@@ -2,7 +2,6 @@ defmodule ChequeitWeb.UserSessionController do
   use ChequeitWeb, :controller
 
   alias ChequeitWeb.UserAuth
-  alias ChequeitWeb.Api.ApiController
 
   def index(conn, _params) do
     render(conn, :index, layout: false)
@@ -19,8 +18,8 @@ defmodule ChequeitWeb.UserSessionController do
       "Host": "cloud.appwrite.io",
       "Content-Type": "application/json",
       "X-Appwrite-Response-Format": "1.5.0",
-      "X-Appwrite-Project": "#{ApiController.appwrite_project_id}",
-      "X-Appwrite-Key": "#{ApiController.appwrite_key}"
+      "X-Appwrite-Project": "#{Application.get_env(:chequeit, ChequeitWeb.Endpoint, :appwrite_project_id) |> Keyword.get(:appwrite_project_id)}",
+      "X-Appwrite-Key": "#{Application.get_env(:chequeit, ChequeitWeb.Endpoint, :appwrite_secret) |> Keyword.get(:appwrite_secret)}"
     ]
 
     url = "https://cloud.appwrite.io/v1/users/#{userId}"
