@@ -2,14 +2,16 @@ defmodule ChequeitWeb.UserAuth do
   import Plug.Conn
   import Phoenix.Controller
 
+  alias ChequeitWeb.Api.ApiController
+
   @doc false
   def create_user_session(conn, %{"$id" => id}, user) do
     header = [
       "Host": "cloud.appwrite.io",
       "Content-Type": "application/json",
       "X-Appwrite-Response-Format": "1.5.0",
-      "X-Appwrite-Project": "#{Application.get_env(:chequeit, ChequeitWeb.Endpoint, :appwrite_project_id) |> Keyword.get(:appwrite_project_id)}",
-      "X-Appwrite-Key": "#{Application.get_env(:chequeit, ChequeitWeb.Endpoint, :appwrite_secret) |> Keyword.get(:appwrite_secret)}"
+      "X-Appwrite-Project": "#{ApiController.appwrite_project_id}",
+      "X-Appwrite-Key": "#{ApiController.appwrite_key}"
     ]
 
     case HTTPoison.post("https://cloud.appwrite.io/v1/users/#{id}/sessions", [], header) do
