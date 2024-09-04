@@ -46,4 +46,8 @@ defmodule ChequeitWeb.PlaidController do
     |> assign(:item_id, item_id)
     |> render(layout: false)
   end
+
+  def create(_conn, _params) do
+    #POST for Plaid
+  end
 end
