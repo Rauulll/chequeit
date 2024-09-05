@@ -1,6 +1,13 @@
 defmodule ChequeitWeb.PlaidController do
   use ChequeitWeb, :controller
 
+  import Plaid
+
+  alias Plaid.Item
+  alias Plaid.Sandbox
+  alias Plaid.LinkToken
+  alias ChequeitWeb.Api.ApiController
+
   def index(conn, _params) do
     user = get_session(conn, :user)
 
@@ -21,8 +28,7 @@ defmodule ChequeitWeb.PlaidController do
   end
 
   def create_plaid_link({:ok, %LinkToken.CreateResponse{link_token: _link_token}}, conn) do
-    {:ok, %Plaid.Sandbox.CreatePublicTokenResponse{public_token: public_token}} =
-      Sandbox.create_public_token("ins_1", ["auth"], ApiController.plaid_config)
+    {:ok, %Plaid.Sandbox.CreatePublicTokenResponse{public_token: public_token}} = Sandbox.create_public_token("ins_1", ["auth"], ApiController.plaid_config)
 
     exchange_token =
       Item.exchange_public_token(public_token, ApiController.plaid_config)
@@ -34,14 +40,11 @@ defmodule ChequeitWeb.PlaidController do
     render(conn, error: error, layout: false)
   end
 
-  def handle_exchange_token(
-    {:ok,
-    %Plaid.Item.ExchangePublicTokenResponse{access_token: access_token, item_id: item_id}},
-    conn) do
-      conn
-      |> assign(:access_toker, access_token)
-      |> assign(:item_id, item_id)
-      |> render(layout: false)
+  def handle_exchange_token({:ok, %Plaid.Item.ExchangePublicTokenResponse{access_token: access_token, item_id: item_id}}, conn) do
+    conn
+    |> assign(:access_toker, access_token)
+    |> assign(:item_id, item_id)
+    |> render(layout: false)
   end
 
   def create(_conn, _params) do
