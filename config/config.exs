@@ -67,13 +67,10 @@ config :chequeit, ChequeitWeb.Endpoint,
   appwrite_project_id: "66c447850018d37b386c",
   fixed_namespace_uuid: "f135c5f2-661e-11ef-8cda-dc7196b9e6e1"
 
-config :sentry, ChequeitWeb.Endpoint,
+config :sentry,
   dsn: "https://962c8bdbaacef7ea7b781179fc2ee5c2@o4507865332580352.ingest.de.sentry.io/4507865346408528",
   environment_name: Mix.env()
 
-config :elixir_plaid, ChequeitWeb.Endpoint,
-  client_id: "66d09cdfac82fe001ae32a42",
-  secret: "071eeb81ecf56e1cdad14c63d35e9f"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
