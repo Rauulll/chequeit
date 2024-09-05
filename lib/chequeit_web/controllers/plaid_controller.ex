@@ -1,13 +1,6 @@
 defmodule ChequeitWeb.PlaidController do
   use ChequeitWeb, :controller
 
-  import Plaid
-
-  alias Plaid.Item
-  alias Plaid.Sandbox
-  alias Plaid.LinkToken
-  alias ChequeitWeb.Api.ApiController
-
   def index(conn, _params) do
     user = get_session(conn, :user)
 
