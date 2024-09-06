@@ -45,3 +45,6 @@ requirements.txt
 
 #ignore config
 /config
+
+#python virtual env
+/.venv
