@@ -16,12 +16,19 @@
     </header>
     <div>
       <.simple_form :let={f} for={@conn.assigns["user"]} as={:user} action={~p"/auth/sign-in"} class="mt-0">
+        <.error :if={@error_message}><%= @error_message %></.error>
         
         <.input field={f[:email]} type="email" label="E-mail" placeholder="johndoe@gmail.com" required />
         <.input field={f[:password]} type="password" label="Password" placeholder="Enter your password" required />
 
+        <:actions :let={f}>
+          <.input field={f[:remember_me]} type="checkbox" label="Remember me" />
+          <.link href={~p"/auth/reset_password"} class="text-sm font-semibold">
+            Forgot your password?
+          </.link>
+        </:actions>
         <:actions>
-          <.button phx-disable-with="Loading" class="w-full form-btn">Sign In</.button>
+          <.button phx-disable-with="Loading..." class="w-full form-btn">Sign In</.button>
         </:actions>
       </.simple_form>
       <footer class="flex justify-center gap-1 p-4">

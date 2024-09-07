@@ -40,20 +40,20 @@
     </nav>
     <div class="footer">
       <div class="footer_name">
-        <p class="text-xl font-bold text-gray-700"><%= String.first("#{@user.name}")%></p>
+        <p class="text-xl font-bold text-gray-700"><%= String.first(@current_user.first_name)%></p>
       </div>
       <div class="footer_email">
         <h1 class="text-14 truncate font-normal text-gray-600">
-          <%= @user.name %>
+          <%=  @current_user.first_name %> <%= @current_user.last_name %>
         </h1>
         <h1 class="text-14 truncate font-normal text-gray-600">
-          <%= @user.email %>
+          <%= @current_user.email %>
         </h1>
       </div>
       <div class="footer_image">
         <.link 
           method="delete" 
-          href={~p"/log-out"}>
+          href={~p"/auth/log_out"}>
           <img src={~p"/images/logout.svg"} alt="logout">
         </.link>
       </div>
