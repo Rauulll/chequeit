@@ -71,6 +71,7 @@ config :sentry,
   dsn: "https://962c8bdbaacef7ea7b781179fc2ee5c2@o4507865332580352.ingest.de.sentry.io/4507865346408528",
   environment_name: Mix.env()
 
+config :chequeit, Chequeit.Repo, migration_primary_key: [type: :uuid]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
