@@ -3,29 +3,29 @@ defmodule ChequeitWeb.UserRegistrationControllerTest do
 
   import Chequeit.AccountFixtures
 
-  describe "GET /auth/sign-up" do
+  describe "GET /auth/sign_up" do
     test "renders registration page", %{conn: conn} do
-      conn = get(conn, ~p"/auth/sign-up")
+      conn = get(conn, ~p"/auth/sign_up")
       response = html_response(conn, 200)
       assert response =~ "Register"
-      assert response =~ ~p"/auth/sign-in"
-      assert response =~ ~p"/auth/sign-up"
+      assert response =~ ~p"/auth/sign_in"
+      assert response =~ ~p"/auth/sign_up"
     end
 
     test "redirects if already logged in", %{conn: conn} do
-      conn = conn |> log_in_user(user_fixture()) |> get(~p"/auth/sign-up")
+      conn = conn |> log_in_user(user_fixture()) |> get(~p"/auth/sign_up")
 
       assert redirected_to(conn) == ~p"/"
     end
   end
 
-  describe "POST /auth/sign-up" do
+  describe "POST /auth/sign_up" do
     @tag :capture_log
     test "creates account and logs the user in", %{conn: conn} do
       email = unique_user_email()
 
       conn =
-        post(conn, ~p"/auth/sign-up", %{
+        post(conn, ~p"/auth/sign_up", %{
           "user" => valid_user_attributes(email: email)
         })
 
@@ -42,7 +42,7 @@ defmodule ChequeitWeb.UserRegistrationControllerTest do
 
     test "render errors for invalid data", %{conn: conn} do
       conn =
-        post(conn, ~p"/auth/sign-up", %{
+        post(conn, ~p"/auth/sign_up", %{
           "user" => %{"email" => "with spaces", "password" => "too short"}
         })
 

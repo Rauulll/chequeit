@@ -1,20 +1,29 @@
-<div class="mx-auto max-w-sm">
-  <.header class="text-center">
-    No confirmation instructions received?
-    <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
-  </.header>
+<div class="flex min-h-screen w-full justify-between font-inter">
+  <section class="flex-center size-full max-sm:px-6">
+    <section class="auth-form">
+      <.header class="text-center">
+        No confirmation instructions received?
+        <:subtitle>We'll send a new confirmation link to your inbox</:subtitle>
+      </.header>
+      <.simple_form :let={f} for={@conn.params["user"]} as={:user} action={~p"/auth/confirm"}>
+        <.input field={f[:email]} type="email" placeholder="Email" required />
+        <:actions>
+          <.button phx-disable-with="Sending..." class="w-full form-btn">
+            Resend confirmation instructions
+          </.button>
+        </:actions>
+      </.simple_form>
 
-  <.simple_form :let={f} for={@conn.params["user"]} as={:user} action={~p"/auth/confirm"}>
-    <.input field={f[:email]} type="email" placeholder="Email" required />
-    <:actions>
-      <.button phx-disable-with="Sending..." class="w-full">
-        Resend confirmation instructions
-      </.button>
-    </:actions>
-  </.simple_form>
-
-  <p class="text-center mt-4">
-    <.link href={~p"/auth/sign-up"}>Register</.link>
-    | <.link href={~p"/auth/sign-in"}>Sign in</.link>
-  </p>
+      <p class="text-center mt-4">
+        <.link href={~p"/auth/sign_up"}>Register</.link>
+        | <.link href={~p"/auth/sign_in"}>Sign in</.link>
+      </p>
+    </section>
+  </section>
+  <div class="auth-asset">
+    <.flash_group flash={@flash} />
+    <div>
+      <img src={~p"/images/auth-image.svg"} width={500} height={500} alt="auth_image">
+    </div>
+  </div>
 </div>

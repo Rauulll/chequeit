@@ -7,25 +7,25 @@ defmodule ChequeitWeb.UserSessionControllerTest do
     %{user: user_fixture()}
   end
 
-  describe "GET /auth/sign-in" do
+  describe "GET /auth/sign_in" do
     test "renders sign in page", %{conn: conn} do
-      conn = get(conn, ~p"/auth/sign-in")
+      conn = get(conn, ~p"/auth/sign_in")
       response = html_response(conn, 200)
       assert response =~ "Sign in"
-      assert response =~ ~p"/auth/sign-up"
+      assert response =~ ~p"/auth/sign_up"
       assert response =~ "Forgot your password?"
     end
 
     test "redirects if already logged in", %{conn: conn, user: user} do
-      conn = conn |> log_in_user(user) |> get(~p"/auth/sign-in")
+      conn = conn |> log_in_user(user) |> get(~p"/auth/sign_in")
       assert redirected_to(conn) == ~p"/"
     end
   end
 
-  describe "POST /auth/sign-in" do
+  describe "POST /auth/sign_in" do
     test "logs the user in", %{conn: conn, user: user} do
       conn =
-        post(conn, ~p"/auth/sign-in", %{
+        post(conn, ~p"/auth/sign_in", %{
           "user" => %{"email" => user.email, "password" => valid_user_password()}
         })
 
@@ -42,7 +42,7 @@ defmodule ChequeitWeb.UserSessionControllerTest do
 
     test "logs the user in with remember me", %{conn: conn, user: user} do
       conn =
-        post(conn, ~p"/auth/sign-in", %{
+        post(conn, ~p"/auth/sign_in", %{
           "user" => %{
             "email" => user.email,
             "password" => valid_user_password(),
@@ -58,7 +58,7 @@ defmodule ChequeitWeb.UserSessionControllerTest do
       conn =
         conn
         |> init_test_session(user_return_to: "/foo/bar")
-        |> post(~p"/auth/sign-in", %{
+        |> post(~p"/auth/sign_in", %{
           "user" => %{
             "email" => user.email,
             "password" => valid_user_password()
@@ -71,7 +71,7 @@ defmodule ChequeitWeb.UserSessionControllerTest do
 
     test "emits error message with invalid credentials", %{conn: conn, user: user} do
       conn =
-        post(conn, ~p"/auth/sign-in", %{
+        post(conn, ~p"/auth/sign_in", %{
           "user" => %{"email" => user.email, "password" => "invalid_password"}
         })
 

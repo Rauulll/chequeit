@@ -91,7 +91,7 @@ defmodule ChequeitWeb.UserResetPasswordControllerTest do
           }
         })
 
-      assert redirected_to(conn) == ~p"/auth/sign-in"
+      assert redirected_to(conn) == ~p"/auth/sign_in"
       refute get_session(conn, :user_token)
 
       assert Phoenix.Flash.get(conn.assigns.flash, :info) =~

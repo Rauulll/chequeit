@@ -158,7 +158,7 @@ defmodule ChequeitWeb.UserAuth do
       socket =
         socket
         |> Phoenix.LiveView.put_flash(:error, "You must sign in to access this page.")
-        |> Phoenix.LiveView.redirect(to: ~p"/auth/sign-in")
+        |> Phoenix.LiveView.redirect(to: ~p"/auth/sign_in")
 
       {:halt, socket}
     end
@@ -208,7 +208,7 @@ defmodule ChequeitWeb.UserAuth do
       conn
       |> put_flash(:error, "You must sign in to access this page.")
       |> maybe_store_return_to()
-      |> redirect(to: ~p"/auth/sign-in")
+      |> redirect(to: ~p"/auth/sign_in")
       |> halt()
     end
   end

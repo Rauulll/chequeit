@@ -11,7 +11,6 @@ defmodule ChequeitWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
-    # plug ChequeitWeb.SetUser
   end
 
   pipeline :api do
@@ -36,10 +35,10 @@ defmodule ChequeitWeb.Router do
   scope "/", ChequeitWeb do
     pipe_through [:auth, :redirect_if_user_is_authenticated]
 
-    get "/auth/sign-up", UserRegistrationController, :new
-    post "/auth/sign-up", UserRegistrationController, :create
-    get "/auth/sign-in", UserSessionController, :new
-    post "/auth/sign-in", UserSessionController, :create
+    get "/auth/sign_up", UserRegistrationController, :new
+    post "/auth/sign_up", UserRegistrationController, :create
+    get "/auth/sign_in", UserSessionController, :new
+    post "/auth/sign_in", UserSessionController, :create
     get "/auth/reset_password", UserResetPasswordController, :new
     post "/auth/reset_password", UserResetPasswordController, :create
     get "/auth/reset_password/:token", UserResetPasswordController, :edit
@@ -53,8 +52,8 @@ defmodule ChequeitWeb.Router do
     get "/history", TransactionsController, :transactions
     get "/transfer", TransferController, :transfer
     get "/banks", BanksController, :banks
-    get "/link-bank", PlaidController, :index
-    post "/link-bank", PlaidController, :create
+    get "/link_bank", PlaidController, :index
+    post "/link_bank", PlaidController, :create
     get "/auth/settings", UserSettingsController, :edit
     put "/auth/settings", UserSettingsController, :update
     get "/auth/settings/confirm_email/:token", UserSettingsController, :confirm_email

@@ -12,7 +12,7 @@
       </div>
     </header>   
     <div>
-      <.simple_form :let={f} for={@changeset} action={~p"/auth/sign-up"} class="mt-0">
+      <.simple_form :let={f} for={@changeset} action={~p"/auth/sign_up"} class="mt-0">
         <.error :if={@changeset.action == :insert}>Oops, something went wrong! Please check the errors below.</.error>
         
         <div class="flex gap-4">
@@ -36,7 +36,7 @@
         <p class="text-14 font-normal text-gray-600">
           Already have an account?
         </p>
-        <.link navigate={~p"/auth/sign-in"} class="form-link">
+        <.link navigate={~p"/auth/sign_in"} class="form-link">
           Sign In
         </.link>
       </footer>

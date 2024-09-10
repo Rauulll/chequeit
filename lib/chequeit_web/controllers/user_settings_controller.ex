@@ -7,7 +7,7 @@ defmodule ChequeitWeb.UserSettingsController do
   plug :assign_email_and_password_changesets
 
   def edit(conn, _params) do
-    render(conn, :edit)
+    render(conn, :edit, layout: false)
   end
 
   def update(conn, %{"action" => "update_email"} = params) do
@@ -30,7 +30,7 @@ defmodule ChequeitWeb.UserSettingsController do
         |> redirect(to: ~p"/auth/settings")
 
       {:error, changeset} ->
-        render(conn, :edit, email_changeset: changeset)
+        render(conn, :edit, email_changeset: changeset, layout: false)
     end
   end
 
@@ -46,7 +46,7 @@ defmodule ChequeitWeb.UserSettingsController do
         |> UserAuth.log_in_user(user)
 
       {:error, changeset} ->
-        render(conn, :edit, password_changeset: changeset)
+        render(conn, :edit, password_changeset: changeset, layout: false)
     end
   end
 

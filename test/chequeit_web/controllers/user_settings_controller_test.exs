@@ -16,7 +16,7 @@ defmodule ChequeitWeb.UserSettingsControllerTest do
     test "redirects if user is not logged in" do
       conn = build_conn()
       conn = get(conn, ~p"/auth/settings")
-      assert redirected_to(conn) == ~p"/auth/sign-in"
+      assert redirected_to(conn) == ~p"/auth/sign_in"
     end
   end
 
@@ -139,7 +139,7 @@ defmodule ChequeitWeb.UserSettingsControllerTest do
     test "redirects if user is not logged in", %{token: token} do
       conn = build_conn()
       conn = get(conn, ~p"/auth/settings/confirm_email/#{token}")
-      assert redirected_to(conn) == ~p"/auth/sign-in"
+      assert redirected_to(conn) == ~p"/auth/sign_in"
     end
   end
 end

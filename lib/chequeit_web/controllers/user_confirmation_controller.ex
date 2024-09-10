@@ -4,7 +4,7 @@ defmodule ChequeitWeb.UserConfirmationController do
   alias Chequeit.Account
 
   def new(conn, _params) do
-    render(conn, :new)
+    render(conn, :new, layout: false)
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
@@ -25,7 +25,7 @@ defmodule ChequeitWeb.UserConfirmationController do
   end
 
   def edit(conn, %{"token" => token}) do
-    render(conn, :edit, token: token)
+    render(conn, :edit, token: token, layout: false)
   end
 
   # Do not sign in the user after confirmation to avoid a

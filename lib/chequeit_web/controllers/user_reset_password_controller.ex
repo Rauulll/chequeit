@@ -36,7 +36,7 @@ defmodule ChequeitWeb.UserResetPasswordController do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Password reset successfully.")
-        |> redirect(to: ~p"/auth/sign-in")
+        |> redirect(to: ~p"/auth/sign_in")
 
       {:error, changeset} ->
         render(conn, :edit, changeset: changeset)

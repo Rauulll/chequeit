@@ -15,7 +15,7 @@
       </div>
     </header>
     <div>
-      <.simple_form :let={f} for={@conn.assigns["user"]} as={:user} action={~p"/auth/sign-in"} class="mt-0">
+      <.simple_form :let={f} for={@conn.assigns["user"]} as={:user} action={~p"/auth/sign_in"} class="mt-0">
         <.error :if={@error_message}><%= @error_message %></.error>
         
         <.input field={f[:email]} type="email" label="E-mail" placeholder="johndoe@gmail.com" required />
@@ -35,7 +35,7 @@
         <p class="text-14 font-normal text-gray-600">
           Don't have an account?
         </p>
-        <.link navigate={~p"/auth/sign-up"} class="form-link">
+        <.link navigate={~p"/auth/sign_up"} class="form-link">
           Sign Up
         </.link>
       </footer>
