@@ -48,3 +48,6 @@ requirements.txt
 
 #python virtual env
 /.venv
+
+#ggshield
+/.cache_ggshield
