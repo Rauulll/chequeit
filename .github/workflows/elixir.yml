@@ -35,7 +35,7 @@ jobs:
           --health-retries 5
 
     runs-on: ubuntu-latest
-    name: Test on OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+    name: Test on OTP '1.17.2' / Elixir '27.0' 
     strategy:
       # Specify the OTP and Elixir versions to use when building
       # and running the workflow steps.
@@ -47,8 +47,8 @@ jobs:
     - name: Set up Elixir
       uses: erlef/setup-beam@v1
       with:
-        otp-version: ${{matrix.otp}}
-        elixir-version: ${{matrix.elixir}}
+        otp-version: '1.17.2'
+        elixir-version: '27.0' 
 
     # Step: Check out the code.
     - name: Checkout code
@@ -96,7 +96,7 @@ jobs:
     # Customize this step as desired.
     - name: Check Formatting
       run: mix format --check-formatted
-
+      
     # Step: Execute the tests.
     - name: Run tests
       run: mix test
