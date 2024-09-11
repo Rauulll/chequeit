@@ -1,4 +1,4 @@
-defmodule HelloWeb.ConnCase do
+defmodule ChequeitWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule HelloWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use HelloWeb.ConnCase, async: true`, although
+  by setting `use ChequeitWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,19 +20,19 @@ defmodule HelloWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint HelloWeb.Endpoint
+      @endpoint ChequeitWeb.Endpoint
 
-      use HelloWeb, :verified_routes
+      use ChequeitWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import HelloWeb.ConnCase
+      import ChequeitWeb.ConnCase
     end
   end
 
   setup tags do
-    Hello.DataCase.setup_sandbox(tags)
+    Chequeit.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 
@@ -45,7 +45,7 @@ defmodule HelloWeb.ConnCase do
   test context.
   """
   def register_and_log_in_user(%{conn: conn}) do
-    user = Hello.AccountsFixtures.user_fixture()
+    user = Chequeit.AccountFixtures.user_fixture()
     %{conn: log_in_user(conn, user), user: user}
   end
 
@@ -55,7 +55,7 @@ defmodule HelloWeb.ConnCase do
   It returns an updated `conn`.
   """
   def log_in_user(conn, user) do
-    token = Hello.Accounts.generate_user_session_token(user)
+    token = Chequeit.Account.generate_user_session_token(user)
 
     conn
     |> Phoenix.ConnTest.init_test_session(%{})
