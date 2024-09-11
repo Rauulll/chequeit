@@ -10,7 +10,7 @@ defmodule Chequeit.Account.User do
     field :address1, :string
     field :city, :string
     field :postal_code, :string
-    field :date_of_birth, :string
+    field :date_of_birth, :date
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true

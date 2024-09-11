@@ -12,7 +12,7 @@ defmodule Chequeit.Repo.Migrations.CreateUsersAuthTables do
       add :address1, :string
       add :city, :string
       add :postal_code, :string
-      add :date_of_birth, :string
+      add :date_of_birth, :date
       add :email, :citext, null: false
       add :hashed_password, :string, null: false
       add :confirmed_at, :utc_datetime

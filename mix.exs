@@ -65,7 +65,8 @@ defmodule Chequeit.MixProject do
       {:elixir_plaid, "~> 1.0.0"},
       {:argon2_elixir, "~> 4.0"},
       {:sentry, "~> 10.0"},
-      {:hackney, "~> 1.19"}
+      {:hackney, "~> 1.19"},
+      {:better_params, "~> 0.5.0"}
     ]
   end
 
