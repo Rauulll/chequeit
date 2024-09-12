@@ -66,7 +66,8 @@ defmodule Chequeit.MixProject do
       {:argon2_elixir, "~> 4.0"},
       {:sentry, "~> 10.0"},
       {:hackney, "~> 1.19"},
-      {:better_params, "~> 0.5.0"}
+      {:better_params, "~> 0.5.0"},
+      {:dwolla, "~> 1.0", hex: :exdwolla}
     ]
   end
 
