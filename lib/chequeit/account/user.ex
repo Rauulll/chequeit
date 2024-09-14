@@ -11,11 +11,15 @@ defmodule Chequeit.Account.User do
     field :city, :string
     field :postal_code, :string
     field :date_of_birth, :date
+    field :ssn, :integer
+    field :state, :string
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
+
+    has_many (:bank), Chequeit.Banks.Bank
 
     timestamps(type: :utc_datetime)
   end
@@ -45,7 +49,7 @@ defmodule Chequeit.Account.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:first_name, :last_name, :address1, :city, :postal_code, :date_of_birth, :email, :password])
+    |> cast(attrs, [:first_name, :last_name, :address1, :city, :postal_code, :date_of_birth, :ssn, :state, :email, :password])
     |> validate_email(opts)
     |> validate_password(opts)
   end
