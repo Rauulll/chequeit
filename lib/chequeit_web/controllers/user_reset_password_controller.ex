@@ -6,7 +6,7 @@ defmodule ChequeitWeb.UserResetPasswordController do
   plug :get_user_by_reset_password_token when action in [:edit, :update]
 
   def new(conn, _params) do
-    render(conn, :new)
+    render(conn, :new, layout: false)
   end
 
   def create(conn, %{"user" => %{"email" => email}}) do
@@ -26,7 +26,7 @@ defmodule ChequeitWeb.UserResetPasswordController do
   end
 
   def edit(conn, _params) do
-    render(conn, :edit, changeset: Account.change_user_password(conn.assigns.user))
+    render(conn, :edit, changeset: Account.change_user_password(conn.assigns.user), layout: false)
   end
 
   # Do not sign in the user after reset password to avoid a
@@ -39,7 +39,7 @@ defmodule ChequeitWeb.UserResetPasswordController do
         |> redirect(to: ~p"/auth/sign_in")
 
       {:error, changeset} ->
-        render(conn, :edit, changeset: changeset)
+        render(conn, :edit, changeset: changeset, layout: false)
     end
   end
 
