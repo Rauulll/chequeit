@@ -46,6 +46,7 @@ defmodule ChequeitWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
+    body_reader: {CacheBodyReader, :read_body, []},
     json_decoder: Phoenix.json_library()
 
   plug Sentry.PlugContext
@@ -53,4 +54,12 @@ defmodule ChequeitWeb.Endpoint do
   plug Plug.Head
   plug Plug.Session, @session_options
   plug ChequeitWeb.Router
+end
+
+defmodule CacheBodyReader do
+  def read_body(conn, opts) do
+    {:ok, body, conn} = Plug.Conn.read_body(conn, opts)
+    conn = update_in(conn.assigns[:raw_body], &[body | &1 || []])
+    {:ok, body, conn}
+  end
 end

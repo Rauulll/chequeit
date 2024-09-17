@@ -11,37 +11,12 @@ defmodule ChequeitWeb.Api.ApiController do
   end
 
   def plaid_config do
-     Application.get_env(:elixir_plaid, ChequeitWeb.Endpoint)
+    client_id = get_plaid_client_id()
+    client_secret = get_plaid_client_secret()
+    [client_id: client_id, secret: client_secret]
   end
 
-  @doc """
-  Gets credentials from configuration.
-  """
-  def get_cred do
-    require_dwolla_credentials()
-  end
+  defp get_plaid_client_id, do: Application.get_env(:elixir_plaid, :client_id) || :not_found
 
-  defp require_dwolla_credentials do
-    case {get_client_id(), get_client_secret()} do
-      {:not_found, _} ->
-        raise message: """
-              Client Id is missing. Please add client_secret to your config.exs file.
-
-              config :dwolla, client_secret: "your_client_secret"
-              """
-
-      {_, :not_found} ->
-        raise message: """
-              Client secret is missing. Please add client_id to your config.exs file.
-
-              config :dwolla, client_id: "your_client_id"
-              """
-
-      {client_id, client_secret} ->
-        %{client_id: client_id, client_secret: client_secret}
-    end
-  end
-  defp get_client_id, do: Application.get_env(:dwolla, :client_id) || :not_found
-
-  defp get_client_secret, do: Application.get_env(:dwolla, :client_secret) || :not_found
+  defp get_plaid_client_secret, do: Application.get_env(:elixir_plaid, :client_secret) || :not_found
 end

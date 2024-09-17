@@ -27,10 +27,11 @@ defmodule ChequeitWeb.Router do
     plug :fetch_current_user
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", ChequeitWeb do
-  #   pipe_through :api
-  # end
+  scope "/webhook", ChequeitWeb do
+    pipe_through :api
+
+    post "/plaid", PlaidWebhookController, :index
+  end
 
   scope "/", ChequeitWeb do
     pipe_through [:auth, :redirect_if_user_is_authenticated]
